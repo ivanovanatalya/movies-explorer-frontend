@@ -1,0 +1,39 @@
+.header {
+  position: absolute;
+  width: 100%;
+  height: 74px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 14px;
+}
+
+.header__logo {
+  width: 38px;
+  height: 38px;
+}
+
+.header__navigation {
+  display: flex;
+  align-items: center;
+}
+
+.header__btn {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.header__btn_primary {
+  color: #fff;
+  background-color: #3456F3;
+  border-radius: 3px;
+  width: 54px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 14px;
+}

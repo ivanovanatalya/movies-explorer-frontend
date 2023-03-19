@@ -1,0 +1,25 @@
+import "./NavTab.css";
+
+const NavTab = () => {
+  return (
+    <ul className="landing-navigation">
+      <li>
+        <a href="#" className="landing-navigation__link">
+          О проекте
+        </a>
+      </li>
+      <li>
+        <a href="#" className="landing-navigation__link">
+          Технологии
+        </a>
+      </li>
+      <li>
+        <a href="#" className="landing-navigation__link">
+          Студент
+        </a>
+      </li>
+    </ul>
+  );
+};
+
+export default NavTab;

@@ -1,0 +1,18 @@
+.landing {
+  width: 100%;
+  min-height: 570px;
+  background-color: #DDDEE3;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../images/landing-logo.svg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing__text {
+  font-size: 31px;
+  line-height: 39px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}

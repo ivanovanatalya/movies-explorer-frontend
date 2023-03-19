@@ -1,0 +1,47 @@
+.techs {
+  margin: 70px 18px;
+}
+
+.techs__title {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 28px;
+  margin-bottom: 10px;
+}
+
+.techs__header {
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.04em;
+  margin-top: 50px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.techs__text {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: -0.04em;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.techs__block-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.techs__block {
+  height: 57px;
+  width: 84px;
+  border-radius: 10px;
+  background: #E8E8E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

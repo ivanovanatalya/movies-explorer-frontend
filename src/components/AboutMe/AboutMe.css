@@ -1,0 +1,39 @@
+.about {
+  margin: 70px 14px;
+}
+
+.about__header {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid #000000;
+  padding-bottom: 28px;
+}
+
+.about__image {
+  height: fit-content;
+}
+
+.about__title {
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.04em;
+  margin: 20px 0;
+}
+
+.about__text {
+  font-size: 11px;
+  line-height: 16px;
+  margin: 20px 0;
+}
+
+.about__text_bold {
+  font-weight: 500;
+}
+
+.about__link {
+  font-weight: 500;
+  line-height: 17px;
+  margin-top: 40px;
+}

@@ -1,0 +1,34 @@
+.search {
+  width: 100%;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.search__input-container {
+  display: flex;
+}
+
+.search__input {
+  min-height: 45px;
+  width: 100%;
+  color: #a0a0a0;
+  background-color: #fafafa;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  border: 0;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search__button {
+  width: 34px;
+  height: 34px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search__checkbox-container {
+  display: flex;
+  margin: 42px 0;
+  justify-content: center;
+}
