@@ -16,8 +16,10 @@
 .card__wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 12px 12px 10px;
+  margin: 10px 12px 10px;
   align-items: center;
+  font-size: 13px;
+  line-height: 16px;
 }
 
 .card__remove-icon {
