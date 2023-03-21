@@ -5,7 +5,8 @@ import "./NotFound.css";
 const NotFound = () => {
   return (
     <main className="page">
-      <div className="page__title">404
+      <div className="page__title">
+        404
       </div>
       <div className="page__text">
         Страница не найдена

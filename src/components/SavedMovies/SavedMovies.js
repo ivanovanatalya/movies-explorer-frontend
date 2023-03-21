@@ -1,13 +1,12 @@
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
 
 const SavedMovies = () => {
   return (
-    <main className="movies">
+    <main className="saved-movies">
       <SearchForm />
-      <div>
-        SavedMoviesCardList
-      </div>
+      <MoviesCardList isSaved />
     </main>
   );
 };

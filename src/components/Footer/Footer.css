@@ -25,3 +25,35 @@
   height: 36px;
   border-bottom: 1px solid #e8e8e8;
 }
+
+@media screen and (min-width: 768px) {
+  .footer {
+    margin: 80px 20px 20px;
+  }
+
+  .footer__wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .footer__line {
+    margin: 0;
+  }
+
+  .footer__line_bordered {
+    margin-bottom: 20px;
+  }
+
+  .footer__line_row {
+    flex-direction: row;
+  }
+
+  .footer__copyright {
+    color: initial
+  }
+}
+
+@media screen and (min-width: 1280px) {
+
+}

@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Main from '../Main/Main';
+import Profile from '../Profile/Profile';
 
 import './App.css';
 
@@ -37,7 +38,7 @@ function App() {
           exact path='/movies'
           element={
             <>
-              <Header />
+              <Header isLoggedIn />
               <Movies /> 
               <Footer />
             </>
@@ -47,7 +48,7 @@ function App() {
           exact path='/saved-movies'
           element={
             <>
-              <Header />
+              <Header isLoggedIn />
               <SavedMovies />
               <Footer />
             </>
@@ -57,9 +58,9 @@ function App() {
           exact path='/profile'
           element={
             <>
-              <Header />
-              profile
-              {/* <Profile /> */}
+              <Header isLoggedIn />
+              {/* profile */}
+              <Profile />
             </>
           }
         />

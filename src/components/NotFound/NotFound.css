@@ -9,19 +9,37 @@
 .page__title {
   font-size: 80px;
   line-height: 97px;
-  letter-spacing: 0em;
-  text-align: center;
-  color: #000;
 }
 
 .page__text {
   font-size: 12px;
   line-height: 15px;
-  letter-spacing: 0em;
 }
 
 .page__link {
   position: absolute;
   bottom: 30px;
   color: #3456F3;
+}
+
+@media screen and (min-width: 768px) {
+  .page__title {
+    font-size: 140px;
+    line-height: 169px;
+  }
+
+  .page__text {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .page__link {
+    bottom: 222px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .page__link {
+    bottom: 60px;
+  }
 }

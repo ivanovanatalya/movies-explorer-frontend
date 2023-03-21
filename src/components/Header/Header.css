@@ -1,5 +1,7 @@
 .header {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 74px;
   display: flex;
@@ -7,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 14px;
+  background-color: transparent;
 }
 
 .header__logo {
@@ -14,9 +17,86 @@
   height: 38px;
 }
 
+.header__icon {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  align-self: flex-end;
+}
+
+.header__icon_menu {
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.header__icon-wrapper {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 13px;
+}
+
+.header__menu {
+
+  display: none;
+}
+
+.header__side-menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.header__side-menu {
+  margin-left: auto;
+  max-width: 520px;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 48px;
+  /* display: none; */
+}
+
 .header__navigation {
   display: flex;
   align-items: center;
+}
+
+.header__navigation_main {
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding-top: 100px;
+}
+
+.header__title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid transparent;
+}
+
+.header__title:hover {
+  border-color: #000;
+}
+
+.header__text {
+  font-weight: 500;
+  line-height: 16px;
 }
 
 .header__btn {
@@ -36,4 +116,36 @@
   justify-content: center;
   align-items: center;
   margin-left: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .header__btn {
+    font-size: 12px;
+  }
+
+  .header__btn_primary {
+    width: 76px;
+    height: 32px;
+  }
+
+  .header__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .header__side-menu {
+    padding-bottom: 92px;
+  }
+
+  .header__navigation_main {
+    padding-top: 115px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+
 }

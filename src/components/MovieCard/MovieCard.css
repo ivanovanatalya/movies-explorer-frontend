@@ -3,13 +3,26 @@
   margin: 20px 10px;
   background: #fff;
   box-shadow: 0px 16px 24px 0px #0000000D;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+}
 
+.card__image {
+  width: 100%;
+  height: 100%;
 }
 
 .card__wrapper {
   display: flex;
   justify-content: space-between;
   margin: 12px 12px 10px;
+  align-items: center;
+}
+
+.card__remove-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .card__save-icon {
@@ -35,4 +48,16 @@
   color: #a0a0a0;
   margin-left: 12px;
   padding-bottom: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    max-width: 339px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+
 }

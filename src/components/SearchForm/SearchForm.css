@@ -27,8 +27,52 @@
   border-bottom: 1px solid #e8e8e8;
 }
 
+.search__button_left {
+  display: none;
+}
+
 .search__checkbox-container {
   display: flex;
   margin: 42px 0;
   justify-content: center;
+}
+
+.search__text {
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.search__checkbox {
+  display: none;
+}
+
+.search__checkbox-label {
+  width: 36px;
+  height: 20px;
+  background-image: url('../../images/tumbler-off.svg');
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 20px;
+  margin-right: 13px;
+}
+
+.search__checkbox:checked + .search__checkbox-label {
+  background-image: url('../../images/tumbler.svg');
+}
+
+@media screen and (min-width: 768px) {
+  .search {
+    padding: 0 30px;
+  }
+
+  .search__button_left {
+    display: block;
+  }
+
+  .search__input {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+
 }
