@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: calc(100vh - 74px);
+  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -71,5 +71,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-
+  .profile {
+    width: 410px;
+    margin: 0 auto;
+    padding: 74px 0 70px;
+  }
 }

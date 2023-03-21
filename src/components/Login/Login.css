@@ -102,5 +102,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-
+  .login {
+    width: 396px;
+    margin: auto;
+    padding: 70px 0;
+  }
 }

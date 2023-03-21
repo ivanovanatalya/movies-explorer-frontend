@@ -41,7 +41,6 @@
 }
 
 .header__menu {
-
   display: none;
 }
 
@@ -147,5 +146,51 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 70px;
+    width: fit-content;
+    font-size: 13px;
+  }
+  .header__account {
+    display: flex;
+    align-items: center;
+  }
 
+  .header__account div {
+    margin-right: 13px;
+  }
+ 
+  .header__account img {
+    height: 30px;
+    width: 30px;
+    padding: 9px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    background: rgba(244, 244, 244, 1);
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .header__menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__navigation {
+    margin-left: 426px;
+    margin-right: 364px;
+  }
+
+  .header__navigation a:first-child {
+    margin-right: 16px;
+  }
 }

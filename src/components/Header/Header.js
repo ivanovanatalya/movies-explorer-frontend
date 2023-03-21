@@ -12,7 +12,7 @@ const Header = ({ isLoggedIn }) => {
       <Link to='/' className="header__logo">
         <img src={logo} className="header__logo" alt="Movies explorer logo" />
       </Link>
-      <div className="header__account">
+      <div className="header__items">
         {isLoggedIn ? (
           <>
             <img className="header__icon" src={openMenu} onClick={() => setIsMenuOpen(true)} alt="open menu button" />
@@ -47,8 +47,8 @@ const Header = ({ isLoggedIn }) => {
                   <Link to="/movies">Фильмы</Link>
                   <Link to="/saved-movies">Сохранённые фильмы</Link>
                 </div>
-                <div className="">
-                  <Link to="/profile" className="header">
+                <div>
+                  <Link to="/profile" className="header__account">
                     <div className="">
                       Аккаунт
                     </div>
