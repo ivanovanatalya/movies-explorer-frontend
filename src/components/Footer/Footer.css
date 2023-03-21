@@ -1,5 +1,5 @@
 .footer {
-  margin: 150px 10px 0;
+  margin: 45px 10px 0;
 }
 
 .footer__link {
@@ -12,6 +12,8 @@
   align-items: center;
   margin: 30px 0;
   gap: 12px;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .footer__line_centered {
@@ -29,6 +31,7 @@
 @media screen and (min-width: 768px) {
   .footer {
     margin: 80px 20px 20px;
+    flex-shrink: 0;
   }
 
   .footer__wrapper {
@@ -55,5 +58,12 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .footer {
+    flex-shrink: 0;
+  }
 
+  .footer__line_centered {
+    font-size: 13px;
+    line-height: 16px;
+  }
 }

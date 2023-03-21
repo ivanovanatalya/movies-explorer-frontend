@@ -24,5 +24,11 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .movies__btn {
+    margin: 50px auto 80px;
+  }
 
+  .movies {
+    flex-grow: 1;
+  }
 }

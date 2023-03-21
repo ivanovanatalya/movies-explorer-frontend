@@ -16,7 +16,7 @@
   font-size: 30px;
   line-height: 36px;
   letter-spacing: -0.04em;
-  margin-top: 50px;
+  margin-top: 60px;
   margin-bottom: 24px;
   text-align: center;
 }
@@ -45,6 +45,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  line-height: 15px;
 }
 
 @media screen and (min-width: 768px) {
@@ -80,11 +82,25 @@
     flex-direction: row;
     max-width: 100%;
     margin-top: 83px;
-
   }
-
 }
 
 @media screen and (min-width: 1280px) {
+  .techs {
+    padding: 100px 70px;
+  }
 
+  .techs__block-wrapper {
+    margin: auto;
+    width: fit-content;
+  }
+
+  .techs__text {
+    margin: 26px auto 100px;
+  }
+
+  .techs__block {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }

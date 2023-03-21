@@ -7,8 +7,9 @@ import { useState } from 'react';
 
 const Header = ({ isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerClass = !isLoggedIn && "header_anon";
   return (
-    <header className="header">
+    <header className={`header ${headerClass}`}>
       <Link to='/' className="header__logo">
         <img src={logo} className="header__logo" alt="Movies explorer logo" />
       </Link>
@@ -59,7 +60,7 @@ const Header = ({ isLoggedIn }) => {
             )}
           </>
         ) : (
-          <nav className="header__navigation">
+          <nav className="header__navigation_anon">
             <Link to="/signup" className="header__btn">
               Регистрация
             </Link>

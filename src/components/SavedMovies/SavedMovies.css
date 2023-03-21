@@ -12,5 +12,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-
+  .saved-movies {
+    flex-grow: 1;
+  }
 }

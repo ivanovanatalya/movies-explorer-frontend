@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 44px;
+  margin-top: 60px;
 }
 
 .about-project__bar-group {
@@ -122,5 +122,16 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .about-project {
+    padding: 110px 70px;
+  }
 
+  .about-project__bars-wrapper {
+    margin-top: 110px;
+  }
+
+  .about-project__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }

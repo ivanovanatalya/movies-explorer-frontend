@@ -4,10 +4,11 @@
   background-color: #DDDEE3;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('../../images/landing-logo.svg');
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin-top: 74px;
 }
 
 .landing__text {
@@ -15,6 +16,14 @@
   line-height: 39px;
   letter-spacing: -0.04em;
   text-align: center;
+  margin-top: 207px;
+  margin-bottom: 246px;
+}
+
+.landing__image {
+  position: absolute;
+  margin-top: 142px;
+  margin-bottom: 180px;
 }
 
 @media screen and (min-width: 768px) {
@@ -27,8 +36,16 @@
     line-height: 58px;
     letter-spacing: -0.04em;
   }
+  .landing__image {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-
+  .landing__text {
+    width: 730px;
+    font-size: 50px;
+    line-height: 58px;
+  }
 }
