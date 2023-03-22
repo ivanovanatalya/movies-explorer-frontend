@@ -17,6 +17,6 @@
     margin: 70px 70px 0 70px;
     gap: 10px 20px;
     padding: 0;
+    align-self: flex-start;
   }
-  
 }

@@ -65,4 +65,8 @@
     width: 270px;
     margin-bottom: 22px;
   }
+
+  .card__wrapper {
+    margin-top: 5px;
+  }
 }
