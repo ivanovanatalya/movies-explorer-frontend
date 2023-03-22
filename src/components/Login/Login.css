@@ -19,7 +19,7 @@
   font-weight: 500;
   line-height: 29px;
   text-align: center;
-  margin: 50px 0 80px;
+  margin: 50px 0 71px;
 }
 
 .login__form {
@@ -73,7 +73,7 @@
   height: 45px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .login__text {
@@ -98,6 +98,19 @@
 
   .login__logo {
     margin: 0;
+  }
+
+  .login__title {
+    margin: 40px 0 32px;
+  }
+
+  .login__btn {
+    margin-bottom: 13px;
+  }
+
+  .login__text {
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 
