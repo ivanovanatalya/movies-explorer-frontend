@@ -38,7 +38,7 @@
 
 @media screen and (min-width: 768px) {
   .portfolio {
-    padding: 0 50px 90px;
+    padding: 0 70px 108px;
   }
 
   .portfolio__title {
@@ -46,20 +46,27 @@
   }
 
   .portfolio__list {
-    margin-top: 50px;
+    margin-top: 37px;
   }
 
   .portfolio__link {
     font-size: 28px;
     line-height: 50px;
+    margin: 10px 0;
+  }
+
+  .portfolio__link::after {
+    background-image: url('../../images/landing-arrow.svg');
+    background-size: 18px 72px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 27px; 
+    height: 60px;
+    content:"";
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .portfolio__item {
-    padding-bottom: 19px;
-  }
-
   .portfolio__link {
     font-size: 30px;
     line-height: 50px;

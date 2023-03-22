@@ -13,7 +13,7 @@ const Footer = () => {
           <a href='https://github.com/ivanovanatalya/' className='footer__link' target='_blank'>Github</a>
       </div>
       <div className="footer__line footer__line_centered">
-          <div className='footer__copyright'>ivanovann&copy;2023</div>
+          <div className='footer__copyright'>&copy;2020</div>
       </div>
       </div>
     </footer>

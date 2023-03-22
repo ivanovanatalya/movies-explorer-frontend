@@ -11,8 +11,8 @@ const AboutProject = () => {
         <div className="about-project__text">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</div>
       </div>
       <div className="about-project__text-wrapper">
-        <div className="about-project__title">На выполнение диплома ушло 5 недель</div>
-        <div className="about-project__text">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</div>
+        <div className="about-project__title about-project__title_second">На выполнение диплома ушло 5 недель</div>
+        <div className="about-project__text about-project__title_second">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</div>
       </div>
       <div className="about-project__bars-wrapper">
         <div className="about-project__bar-group">

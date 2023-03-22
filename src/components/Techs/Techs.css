@@ -95,12 +95,23 @@
     width: fit-content;
   }
 
+  .techs__block-wrapper .techs__block {
+    width: 90px;
+    height: 60px;
+  }
+
   .techs__text {
     margin: 26px auto 100px;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .techs__block {
     font-size: 14px;
     line-height: 17px;
+  }
+
+  .techs__header {
+    margin-top: 94px;
   }
 }

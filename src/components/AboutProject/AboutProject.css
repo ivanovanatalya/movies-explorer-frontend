@@ -95,6 +95,7 @@
   .about-project__text {
     font-size: 12px;
     line-height: 18px;
+    margin: 21px 0 34px;
   }
 
   .about-project__title {
@@ -119,6 +120,10 @@
     font-size: 14px;
     line-height: 17px;
   }
+
+  .about-project__title_second {
+    padding-left: 16px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -127,11 +132,19 @@
   }
 
   .about-project__bars-wrapper {
-    margin-top: 110px;
+    margin-top: 77px;
   }
 
   .about-project__text {
     font-size: 14px;
     line-height: 20px;
+  }
+
+  .about-project__text {
+    margin-top: 28px;
+  }
+
+  .about-project__status-bar_sm {
+    width: 228px;
   }
 }

@@ -36,6 +36,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  
-
+  .landing-navigation {
+    padding-top: 0;
+  }
 }

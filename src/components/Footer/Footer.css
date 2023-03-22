@@ -30,7 +30,7 @@
 
 @media screen and (min-width: 768px) {
   .footer {
-    margin: 80px 20px 20px;
+    margin: 60px 30px 20px;
     flex-shrink: 0;
   }
 
@@ -53,17 +53,24 @@
   }
 
   .footer__copyright {
-    color: initial
+    color: initial;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .footer__line_centered {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .footer__link {
+    margin-left: 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .footer {
     flex-shrink: 0;
-  }
-
-  .footer__line_centered {
-    font-size: 13px;
-    line-height: 16px;
+    margin: 79px 70px 20px;
   }
 }
