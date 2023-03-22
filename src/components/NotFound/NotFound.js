@@ -11,7 +11,7 @@ const NotFound = () => {
       <div className="page__text">
         Страница не найдена
       </div>
-      <Link
+      <Link to="/"
         className="page__link"
       >
         Назад

@@ -17,7 +17,7 @@ const Header = ({ isLoggedIn }) => {
         {isLoggedIn ? (
           <>
             <img className="header__icon" src={openMenu} onClick={() => setIsMenuOpen(true)} alt="open menu button" />
-            {isMenuOpen ? (
+            {isMenuOpen && (
               <section className="header__side-menu-wrapper">
                 <div className="header__side-menu">
                   <img className="header__icon header__icon_menu" src={closeMenu} onClick={() => setIsMenuOpen(false)} alt="close menu button" />
@@ -42,7 +42,7 @@ const Header = ({ isLoggedIn }) => {
                   </Link>
                 </div>
               </section>
-            ) : (
+            )}
               <section className="header__menu">
                 <div className="header__navigation">
                   <Link to="/movies">Фильмы</Link>
@@ -57,7 +57,6 @@ const Header = ({ isLoggedIn }) => {
                   </Link>
                 </div>
               </section>
-            )}
           </>
         ) : (
           <nav className="header__navigation_anon">

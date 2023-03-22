@@ -14,13 +14,11 @@ const Login = () => {
           <label className="login__label" htmlFor="#email">
           E-mail
           </label>
-          <input id="email" className="login__input" value="pochta@yandex.ru|" type="email" />
-        {/* </div>
-        <div> */}
+          <input id="email" className="login__input" placeholder="E-mail" value="pochta@yandex.ru|" type="email" required />
           <label className="login__label" htmlFor="#password">
           Пароль
           </label>
-          <input id="password" className="login__input login__input" value="" type="password" />
+          <input id="password" className="login__input login__input" placeholder="Password" value="" type="password" required />
         </div>
         <nav className="login__navigation">
           <Link to="/signin" className="login__btn">

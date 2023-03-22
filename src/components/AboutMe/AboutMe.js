@@ -3,7 +3,7 @@ import student from "../../images/student-pic.png";
 
 const AboutMe = () => {
   return (
-    <section className="about-me">
+    <section className="about-me" id="#aboutme">
       <h2 className="about-me__header">
         Студент
       </h2>
@@ -22,7 +22,7 @@ const AboutMe = () => {
             Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </div>
           <div className="about-me__link">
-            <a href="#" target="_blank">
+            <a href="https://github.com/ivanovanatalya" target="_blank">
               Github
             </a>
           </div>

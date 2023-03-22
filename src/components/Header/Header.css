@@ -192,7 +192,6 @@
   .header__items {
     display: flex;
     flex-direction: column;
-
   }
 
   .header__navigation {
@@ -207,4 +206,9 @@
   .header__btn_primary {
     margin-left: 30px;
   }
+
+  .header__side-menu-wrapper {
+    display: none;
+  }
+  
 }
