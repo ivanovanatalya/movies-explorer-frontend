@@ -9,7 +9,9 @@ const MovieCard = ({ isSaved }) => {
       <div className="card__wrapper">
         33 слова о дизайне
         {isSaved ? (
-          <img className="card__remove-icon" src={remove} alt="remove saved movie" />
+          <button type="button" className="card__btn">
+            <img className="card__remove-icon" src={remove} alt="remove saved movie" />
+          </button>
         ) : (
           <>
             <input id="card" className="card__save-btn" type="checkbox" />

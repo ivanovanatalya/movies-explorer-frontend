@@ -11,7 +11,7 @@ const AboutMe = () => {
         <div className="about-me__image">
           <img src={student} alt="student image" />
         </div>
-        <div className="about-me__text__wrapper">
+        <div className="about-me__text-wrapper">
           <div className="about-me__title">
             Виталий
           </div>

@@ -27,9 +27,11 @@ const Register = () => {
           <p className="register__label register__input_error">Что-то пошло не так...</p>
         </div>
         <nav className="register__navigation">
-          <Link to="/signup" className="register__btn">
-          Зарегистрироваться
-          </Link>
+          <button  className="register__btn" type="button">
+            <Link to="/signup">
+              Зарегистрироваться
+            </Link>
+          </button>
           <div className="register__block">
             <span className="register__text">
               Уже зарегистрированы?

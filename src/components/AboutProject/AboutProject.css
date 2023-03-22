@@ -124,6 +124,10 @@
   .about-project__title_second {
     padding-left: 16px;
   }
+
+  .about-project__text_second {
+    padding-left: 16px;
+  }
 }
 
 @media screen and (min-width: 1280px) {

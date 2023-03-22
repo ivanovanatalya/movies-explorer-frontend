@@ -21,9 +21,11 @@ const Login = () => {
           <input id="password" className="login__input login__input" placeholder="Password" value="" type="password" required />
         </div>
         <nav className="login__navigation">
-          <Link to="/signin" className="login__btn">
-          Войти
-          </Link>
+          <button type="button" className="login__btn">
+            <Link to="/signin">
+              Войти
+            </Link>
+          </button>
           <div className="login__block">
             <span className="login__text">
               Ещё не зарегистрированы?

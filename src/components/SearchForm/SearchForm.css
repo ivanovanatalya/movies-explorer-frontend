@@ -23,12 +23,18 @@
 .search__button {
   width: 34px;
   height: 34px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
   padding-bottom: 13px;
   border-bottom: 1px solid #e8e8e8;
+  cursor: pointer;
+  box-sizing: initial;
 }
 
 .search__button_left {
   display: none;
+  cursor: initial;
 }
 
 .search__checkbox-container {

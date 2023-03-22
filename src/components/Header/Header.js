@@ -7,11 +7,11 @@ import { useState } from 'react';
 
 const Header = ({ isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const headerClass = !isLoggedIn && "header_anon";
+  const headerClass = !isLoggedIn ? " header_anon" : "";
   return (
-    <header className={`header ${headerClass}`}>
+    <header className={`header${headerClass}`}>
       <Link to='/' className="header__logo">
-        <img src={logo} className="header__logo" alt="Movies explorer logo" />
+        <img src={logo} alt="Movies explorer logo" />
       </Link>
       <div className="header__items">
         {isLoggedIn ? (
@@ -59,7 +59,7 @@ const Header = ({ isLoggedIn }) => {
               </section>
           </>
         ) : (
-          <nav className="header__navigation_anon">
+          <nav className="header__navigation header__navigation_anon">
             <Link to="/signup" className="header__btn">
               Регистрация
             </Link>
