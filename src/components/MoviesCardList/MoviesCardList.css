@@ -1,0 +1,22 @@
+.card-list {
+  margin: 26px 0 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .card-list {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 30px;
+    gap: 10px 30px;
+    margin-top: 83px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .card-list {
+    margin: 70px 70px 0 70px;
+    gap: 10px 20px;
+    padding: 0;
+    align-self: flex-start;
+  }
+}

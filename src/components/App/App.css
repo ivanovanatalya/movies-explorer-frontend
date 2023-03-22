@@ -1,0 +1,12 @@
+.app {
+  background-color: #fafafa;
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+@media screen and (min-width: 768px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+}

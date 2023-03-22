@@ -1,0 +1,154 @@
+.about-project {
+  padding: 70px 18px;
+}
+
+.about-project__header {
+  padding-bottom: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+}
+
+.about-project__title {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  padding-top: 40px;
+}
+
+.about-project__text {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0em;
+  margin: 16px 0;
+}
+
+.about-project__bars-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.about-project__bar-group {
+  display: grid;
+  gap: 10px;
+}
+
+.about-project__status-bar {
+  height: 36px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-project__status-bar_sm {
+  width: 100px;
+  background: #3456F3;
+  color: #fff;
+}
+
+.about-project__status-bar_lg {
+  width: 184px;
+  background: #F2F2F2;
+}
+
+.about-project__subtitle {
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__header {
+    padding-bottom: 23px;
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .about-project__bars-wrapper {
+    width: 100%;
+  }
+
+  .about-project__status-bar_lg {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-project__text-wrapper {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .about-project__text {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 21px 0 34px;
+  }
+
+  .about-project__title {
+    padding-top: 50px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .about-project__status-bar_sm {
+    width: 140px;
+  }
+
+  .about-project__status-bar_lg {
+    width: 100%;
+  }
+
+  .about-project__bar-group_lg {
+    width: 100%;
+  }
+
+  .about-project__subtitle {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-project__title_second {
+    padding-left: 16px;
+  }
+
+  .about-project__text_second {
+    padding-left: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project {
+    padding: 110px 70px;
+  }
+
+  .about-project__bars-wrapper {
+    margin-top: 77px;
+  }
+
+  .about-project__text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .about-project__text {
+    margin-top: 28px;
+  }
+
+  .about-project__status-bar_sm {
+    width: 228px;
+  }
+}
