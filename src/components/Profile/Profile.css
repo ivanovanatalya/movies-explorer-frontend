@@ -13,7 +13,7 @@
   font-weight: 500;
   line-height: 29px;
   text-align: center;
-  margin: 50px 0 80px;
+  margin: 0px 0 65px;
 }
 
 .profile__form {
@@ -67,6 +67,11 @@
 @media screen and (min-width: 768px) {
   .profile {
     padding: 310px 180px 236px;
+    height: 97vh;
+  }
+
+  .profile__title {
+    margin: 0px 0 81px;
   }
 }
 
@@ -75,5 +80,10 @@
     width: 410px;
     margin: 0 auto;
     padding: 74px 0 70px;
+    height: 100vh;
+  }
+
+  .profile__title {
+    margin: 73px 0 109px;
   }
 }
