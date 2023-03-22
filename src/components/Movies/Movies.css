@@ -21,16 +21,22 @@
 
 @media screen and (min-width: 768px) {
   .movies {
-    padding: 154px 0;
+    padding-top: 157px;
+    padding-bottom: 0;
+  }
+
+  .movies__btn {
+    margin: 51px auto 80px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .movies__btn {
-    margin: 50px auto 80px;
+    margin: 61px auto 80px;
   }
 
   .movies {
     flex-grow: 1;
+    padding-top: 136px;
   }
 }

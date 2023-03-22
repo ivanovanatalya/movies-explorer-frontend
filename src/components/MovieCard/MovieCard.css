@@ -56,12 +56,13 @@
   .card {
     max-width: 339px;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .card {
     width: 270px;
+    margin-bottom: 22px;
   }
 }
