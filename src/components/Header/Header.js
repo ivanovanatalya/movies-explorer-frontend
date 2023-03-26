@@ -60,10 +60,10 @@ const Header = ({ isLoggedIn }) => {
           </>
         ) : (
           <nav className="header__navigation header__navigation_anon">
-            <Link to="/signup" className="header__btn">
+            <Link to="/sign-up" className="header__btn">
               Регистрация
             </Link>
-            <Link to="/signin" className="header__btn header__btn_primary">
+            <Link to="/sign-in" className="header__btn header__btn_primary">
               Войти
             </Link>
           </nav>

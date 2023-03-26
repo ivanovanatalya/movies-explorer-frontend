@@ -53,7 +53,7 @@ class Api {
   //     .then(res => this._getResponseData(res));
   // }
 
-  _setSavedMovie(cardID) {
+  _setSavedMovie(movieID) {
     return fetch(`${this._url}/movies`, {
       method: 'PUT',
       headers: { authorization: this._headers.authorization },
@@ -61,7 +61,7 @@ class Api {
       .then(res => this._getResponseData(res));
   }
 
-  _deleteSavedMovie(cardID) {
+  _deleteSavedMovie(movieID) {
     return fetch(`${this._url}/movies`, {
       method: 'DELETE',
       headers: { authorization: this._headers.authorization },
@@ -69,8 +69,8 @@ class Api {
       .then(res => this._getResponseData(res));
   }
 
-  changeSavedMovieStatus(cardID, isLiked) {
-    return isLiked ? this._deleteCardLike(cardID) : this._setCardLike(cardID);
+  changeSavedMovieStatus(movieID, isSaved) {
+    return isSaved ? this._deleteSavedMovie(movieID) : this._setSavedMovie(movieID);
   }
 
   setToken(token) {

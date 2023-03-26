@@ -31,7 +31,7 @@ const Profile = () => {
           <button type="button" className="profile__link">
             Редактировать
           </button>
-          <Link to="/signin" className="profile__link profile__link_alert">
+          <Link to="/sign-in" className="profile__link profile__link_alert">
             Выйти из аккаунта
           </Link>
         </nav>

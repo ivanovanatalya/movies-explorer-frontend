@@ -28,7 +28,7 @@ const Register = () => {
         </div>
         <nav className="register__navigation">
           <button  className="register__btn" type="button">
-            <Link to="/signup">
+            <Link to="/sign-up">
               Зарегистрироваться
             </Link>
           </button>
@@ -36,7 +36,7 @@ const Register = () => {
             <span className="register__text">
               Уже зарегистрированы?
             </span>
-            <Link to="/signin" className="register__link ">
+            <Link to="/sign-in" className="register__link ">
               Войти
             </Link>
           </div>

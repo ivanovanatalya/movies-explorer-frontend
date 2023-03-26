@@ -11,7 +11,7 @@ class AuthApi {
   }
 
   signUp(email, password) {
-    return fetch(`${this._url}/signup`, {
+    return fetch(`${this._url}/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ class AuthApi {
   }
 
   signIn(email, password) {
-    return fetch(`${this._url}/signin`, {
+    return fetch(`${this._url}/sign-in`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -22,7 +22,7 @@ const Login = () => {
         </div>
         <nav className="login__navigation">
           <button type="button" className="login__btn">
-            <Link to="/signin">
+            <Link to="/sign-in">
               Войти
             </Link>
           </button>
@@ -30,7 +30,7 @@ const Login = () => {
             <span className="login__text">
               Ещё не зарегистрированы?
             </span>
-            <Link to="/signup" className="login__link ">
+            <Link to="/sign-up" className="login__link ">
               Регистрация
             </Link>
           </div>
