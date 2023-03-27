@@ -14,16 +14,18 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { authApi } from '../../utils/authApi';
 import { api } from '../../utils/MainApi';
+import { moviesApi } from '../../utils/MoviesApi';
 
 import './App.css';
+import { filterMovies, normalizeMovies } from '../../utils/utils';
 
 function App() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const successMsg = 'Вы успешно зарегистрировались!';
   const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
   const initTooltipData = { isOpen: false, type: '', text: '' };
   const [tooltipData, setTooltipData] = useState(initTooltipData);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [userMail, setUserMail] = useState('');
   const [currentUser, setCurrentUser] = useState ('name');
   const [movies, setMovies] = useState([]);
@@ -34,29 +36,34 @@ function App() {
       authApi.checkToken(jwt)
         .then(res => {
           if (res) {
+            console.log('check')
             api.setToken(jwt);
             setIsLoggedIn(true);
             setUserMail(res.email);
-            history.replace('/');
+            // history.replace('/');
+            // navigate('/', { replace: true })
           }
         })
         .catch(err => console.log(err));
     } else {
-      history.replace('/sign-in');
+      console.log('fail')
+      // history.replace('/sign-in');
+      navigate('/sign-in', { replace: true })
     }
-  }, [history]);
+  }, [navigate]);
 
   useEffect(() => {
     if (isLoggedIn) {
       api.getUserInfo()
         .then(res => {
+          console.log('isLog')
           setCurrentUser(res);
         })
         .catch(err => console.log(err));
     }
-  }, [history, isLoggedIn]);
+  }, [isLoggedIn]);
 
-  function handleLogin(email, password) {
+  function handleLogin({ email, password }) {
     authApi.signIn(email, password)
       .then(res => {
         if (res) {
@@ -64,7 +71,8 @@ function App() {
           api.setToken(jwt);
           setIsLoggedIn(true);
           setUserMail(email);
-          history.replace('/');
+          // history.replace('/');
+          navigate('/', { replace: true })
         }
       })
       .catch(err => {
@@ -73,12 +81,13 @@ function App() {
       });
   }
 
-  function handleRegister(email, password) {
-    authApi.signUp(email, password)
+  function handleRegister({ name, email, password }) {
+    authApi.signUp(name, email, password)
       .then(res => {
         if (res) {
           setTooltipData({ isOpen: true, type: 'success', text: successMsg });
-          history.replace('/sign-in');
+          // history.replace('/sign-in');
+          navigate('/sign-in', { replace: true })
         }
       })
       .catch(err => {
@@ -101,11 +110,36 @@ function App() {
       });
   }
 
+  function handleGetMovies(searchInput, isShort) {
+    moviesApi.getMoviesList()
+      .then((movies) => {
+        console.log('fond')
+
+        const normalizedMovies = normalizeMovies(movies)
+        const filteredMovies = searchInput
+        ? filterMovies(normalizedMovies, searchInput, isShort)
+        : [];
+
+        const search = {
+          movies: filterMovies,
+          isShort,
+          searchInput,
+        }
+        localStorage.setItem('searchData', search);
+
+        const renderedMovies = filteredMovies.splice(0, 5);
+        setMovies(renderedMovies);
+      })
+      .catch(err => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }
+
   function handleSignOut() {
-    localStorage.removeItem('token');
+    localStorage.clear();
     setIsLoggedIn(false);
-    history.replace('/sign-in');
     setUserMail('');
+    navigate('/', { replace: true })
   }
 
   return (
@@ -125,7 +159,7 @@ function App() {
             exact path='/'
             element={
               <>
-                <Header />
+                <Header isLoggedIn={isLoggedIn} />
                 <Main />
                 <Footer />
               </>
@@ -134,18 +168,20 @@ function App() {
           <Route
             exact path='/movies'
             element={
-              <ProtectedRoute>
-                <Header isLoggedIn />
-                <Movies />
+              <ProtectedRoute isLoggedIn={isLoggedIn} >
+              <>
+                <Header isLoggedIn={isLoggedIn} />
+                <Movies onSearch={handleGetMovies} renderedMovies={movies}/>
                 <Footer />
+              </>
               </ProtectedRoute>
             }
           />
           <Route
             exact path='/saved-movies'
             element={
-              <ProtectedRoute>
-                <Header isLoggedIn />
+              <ProtectedRoute isLoggedIn={isLoggedIn} >
+                <Header isLoggedIn={isLoggedIn} />
                 <SavedMovies />
                 <Footer />
               </ProtectedRoute>
@@ -153,9 +189,9 @@ function App() {
           <Route
             exact path='/profile'
             element={
-              <ProtectedRoute>
-                <Header isLoggedIn />
-                <Profile />
+              <ProtectedRoute isLoggedIn={isLoggedIn} >
+                <Header isLoggedIn={isLoggedIn} />
+                <Profile onSignOut={handleSignOut} />
               </ProtectedRoute>
             }
           />

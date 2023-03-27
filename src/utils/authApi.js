@@ -10,13 +10,14 @@ class AuthApi {
     return res.json();
   }
 
-  signUp(email, password) {
+  signUp(name, email, password) {
     return fetch(`${this._url}/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
+        name,
         email,
         password,
       })
@@ -56,5 +57,6 @@ class AuthApi {
 
 export const authApi = new AuthApi({
   // baseUrl: 'https://auth.nomoreparties.co',
-  baseUrl: 'https://api.mesto.ivanovann.nomoredomains.work',
+  // baseUrl: 'https://api.mesto.ivanovann.nomoredomains.work',
+  baseUrl: 'http://localhost:3001',
 });

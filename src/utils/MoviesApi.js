@@ -12,14 +12,15 @@ class Api {
   }
 
   getMoviesList() {
-    return fetch(`${this._url}/movies`, {
+    const token = localStorage.getItem('token');
+    return fetch(`${this._url}`, {
       method: 'GET',
-      headers: { authorization: this._headers.authorization },
+      headers: { authorization: `Bearer ${token}` },
     })
       .then(res => this._getResponseData(res));
   }}
   
-export const api = new Api({
+export const moviesApi = new Api({
   baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
   headers: {
     'Content-Type': 'application/json'

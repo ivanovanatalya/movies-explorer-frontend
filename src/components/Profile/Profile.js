@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../../images/logo.svg';
 import "./Profile.css";
 
-const Profile = () => {
+const Profile = ({ onSignOut }) => {
   return (
     <main className="profile">
       <div className="profile__title">
@@ -15,7 +15,7 @@ const Profile = () => {
               Имя
             </div>
             <div id="password" className="profile__text" >
-              Виталий
+            
             </div>
           </div>
           <div className="profile__form-item">
@@ -23,7 +23,7 @@ const Profile = () => {
               E-mail
             </div>
             <div id="email" className="profile__text" >
-              pochta@yandex.ru
+        
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ const Profile = () => {
           <button type="button" className="profile__link">
             Редактировать
           </button>
-          <Link to="/sign-in" className="profile__link profile__link_alert">
+          <Link to="/sign-in" onClick={onSignOut}  className="profile__link profile__link_alert">
             Выйти из аккаунта
           </Link>
         </nav>
