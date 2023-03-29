@@ -19,6 +19,7 @@ const filterMovies = (movies, keyWord, isShort) => {
 };
 
 const normalizeMovies = (movies) => {
+  console.log(movies)
   return movies
     .map((movie) => ({
         country: movie.country || 'unknown',
@@ -38,4 +39,11 @@ const normalizeMovies = (movies) => {
     // ));
 };
 
-export { filterMovies, normalizeMovies };
+const formatDuration = (time) => {
+  const hours = Math.trunc(time / 60);
+  const minutes = time % 60;
+
+  return hours > 0 ? `${hours}ч ${minutes}м` : `${minutes}м`;
+};
+
+export { filterMovies, normalizeMovies, formatDuration };

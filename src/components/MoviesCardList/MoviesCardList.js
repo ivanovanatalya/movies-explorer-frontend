@@ -22,7 +22,7 @@ const MoviesCardList = ({ isSaved, renderedMovies }) => {
 
   return (
     <section className="card-list">
-      {renderedMovies.map((item, index) => <MovieCard key={index} isSaved={isSaved} />)}
+      {renderedMovies.map((item, index) => <MovieCard key={index} data={item} isSaved={isSaved} />)}
     </section>
   );
 };

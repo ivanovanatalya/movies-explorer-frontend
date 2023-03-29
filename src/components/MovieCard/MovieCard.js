@@ -1,13 +1,15 @@
 import "./MovieCard.css";
 import card from "../../images/card.png";
 import remove from "../../images/close.svg";
+import { formatDuration } from "../../utils/utils";
 
-const MovieCard = ({ isSaved }) => {
+const MovieCard = ({ isSaved, data }) => {
+  console.log(data)
   return (
     <div className="card">
-      <img className="card__image" src={card} alt="card image" />
+      <img className="card__image" src={data.image} alt={data.nameRU} />
       <div className="card__wrapper">
-        33 слова о дизайне
+        {data.nameRU}
         {isSaved ? (
           <button type="button" className="card__btn">
             <img className="card__remove-icon" src={remove} alt="remove saved movie" />
@@ -20,7 +22,7 @@ const MovieCard = ({ isSaved }) => {
         )}
       </div>
       <div className="card__text">
-        1ч 42м
+        {formatDuration(data.duration)}
       </div>
     </div>
   );

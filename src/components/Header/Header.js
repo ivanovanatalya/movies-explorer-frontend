@@ -8,6 +8,13 @@ import { useState } from 'react';
 const Header = ({ isLoggedIn }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const headerClass = !isLoggedIn ? " header_anon" : "";
+
+  const handleOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header className={`header${headerClass}`}>
       <Link to='/' className="header__logo">
@@ -18,21 +25,21 @@ const Header = ({ isLoggedIn }) => {
           <>
             <img className="header__icon" src={openMenu} onClick={() => setIsMenuOpen(true)} alt="open menu button" />
             {isMenuOpen && (
-              <section className="header__side-menu-wrapper">
+              <section className="header__side-menu-wrapper" onClick={handleOverlayClick}>
                 <div className="header__side-menu">
                   <img className="header__icon header__icon_menu" src={closeMenu} onClick={() => setIsMenuOpen(false)} alt="close menu button" />
                   <div className="header__navigation header__navigation_main">
-                    <Link to="/" className="header__title">
+                    <Link to="/" onClick={() => setIsMenuOpen(false)} className="header__title">
                       Главная
                     </Link>
-                    <Link to="/movies" className="header__title">
+                    <Link to="/movies" onClick={() => setIsMenuOpen(false)} className="header__title">
                       Фильмы
                     </Link>
-                    <Link to="/saved-movies" className="header__title">
+                    <Link to="/saved-movies" onClick={() => setIsMenuOpen(false)} className="header__title">
                       Сохранённые фильмы
                     </Link>
                   </div>
-                  <Link to="/profile" className="header__navigation">
+                  <Link to="/profile" onClick={() => setIsMenuOpen(false)} className="header__navigation">
                     <div className="header__text">
                       Аккаунт
                     </div>

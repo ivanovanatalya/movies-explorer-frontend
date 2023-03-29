@@ -39,10 +39,16 @@
   font-size: 11px;
   line-height: 13px;
   text-align: right;
+  border: 0;
+  background: transparent;
 }
 
 .profile__text_bold {
   font-weight: 500;
+}
+
+.profile__text_editable {
+  text-align: initial;
 }
 
 .profile__navigation {

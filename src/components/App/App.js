@@ -18,17 +18,23 @@ import { moviesApi } from '../../utils/MoviesApi';
 
 import './App.css';
 import { filterMovies, normalizeMovies } from '../../utils/utils';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+
+export const successMsg = 'Вы успешно зарегистрировались!';
+export const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
 
 function App() {
   const navigate = useNavigate();
-  const successMsg = 'Вы успешно зарегистрировались!';
-  const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
-  const initTooltipData = { isOpen: false, type: '', text: '' };
+  const initTooltipData = { message: '', isSuccess: false, };
   const [tooltipData, setTooltipData] = useState(initTooltipData);
+  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(null);
-  const [userMail, setUserMail] = useState('');
-  const [currentUser, setCurrentUser] = useState ('name');
+  const [currentUser, setCurrentUser] = useState({
+    userName: "name",
+    userMail: "email"
+  });
   const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('token');
@@ -36,12 +42,12 @@ function App() {
       authApi.checkToken(jwt)
         .then(res => {
           if (res) {
-            console.log('check')
             api.setToken(jwt);
             setIsLoggedIn(true);
-            setUserMail(res.email);
-            // history.replace('/');
-            // navigate('/', { replace: true })
+            setCurrentUser({
+              userName: res.name,
+              userMail: res.email
+            });
           }
         })
         .catch(err => console.log(err));
@@ -56,12 +62,25 @@ function App() {
     if (isLoggedIn) {
       api.getUserInfo()
         .then(res => {
-          console.log('isLog')
-          setCurrentUser(res);
+          setCurrentUser({
+            userName: res.name,
+            userMail: res.email
+          })
         })
         .catch(err => console.log(err));
     }
   }, [isLoggedIn]);
+
+  const closeAllPopups = () => {
+    setInfoTooltipPopupOpen(false);
+    // setIsMenuOpen(false);
+  }
+
+  const handleOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeAllPopups();
+    }
+  };
 
   function handleLogin({ email, password }) {
     authApi.signIn(email, password)
@@ -70,14 +89,18 @@ function App() {
           const jwt = localStorage.getItem('token');
           api.setToken(jwt);
           setIsLoggedIn(true);
-          setUserMail(email);
+          setCurrentUser({
+            userName: res.name,
+            userMail: res.email,
+          })
           // history.replace('/');
           navigate('/', { replace: true })
         }
       })
       .catch(err => {
         console.log(err);
-        setTooltipData({ isOpen: true, type: 'fail', text: failMsg });
+        setTooltipData({ isSuccess: false, message: failMsg });
+        setInfoTooltipPopupOpen(true);
       });
   }
 
@@ -85,14 +108,16 @@ function App() {
     authApi.signUp(name, email, password)
       .then(res => {
         if (res) {
-          setTooltipData({ isOpen: true, type: 'success', text: successMsg });
+          setTooltipData({ isSuccess: true, message: successMsg });
+          setInfoTooltipPopupOpen(true)
           // history.replace('/sign-in');
           navigate('/sign-in', { replace: true })
         }
       })
       .catch(err => {
         console.log(err);
-        setTooltipData({ isOpen: true, type: 'fail', text: failMsg });
+        setTooltipData({ isSuccess: false, message: failMsg });
+        setInfoTooltipPopupOpen(true);
       });
   }
 
@@ -135,16 +160,44 @@ function App() {
       });
   }
 
+  function handleGetSavedMovies(searchInput, isShort) {
+    api.getSavedMovies()
+      .then((movies) => {
+        console.log('fond')
+
+        // const normalizedMovies = normalizeMovies(movies)
+        
+        setSavedMovies(movies);
+      })
+      .catch(err => {
+        console.log(err); // выведем ошибку в консоль
+      });
+  }
+
+  function handleUpdateUser(name, email) {
+    return api.setUserInfo(name, email)
+      .then(res => {
+        console.log(res)
+        setCurrentUser({
+          userName: res.name,
+          userMail: res.email,
+        });
+        // closeAllPopups();
+      })
+  }
+
   function handleSignOut() {
     localStorage.clear();
     setIsLoggedIn(false);
-    setUserMail('');
+    setCurrentUser({
+      userName: 'none',
+      userMail: 'none',
+    })
     navigate('/', { replace: true })
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-
       <div className='app'>
         <Routes>
           <Route
@@ -159,7 +212,8 @@ function App() {
             exact path='/'
             element={
               <>
-                <Header isLoggedIn={isLoggedIn} />
+                <Header isLoggedIn={isLoggedIn}
+                handleOverlayClick={handleOverlayClick}/>
                 <Main />
                 <Footer />
               </>
@@ -170,7 +224,8 @@ function App() {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} >
               <>
-                <Header isLoggedIn={isLoggedIn} />
+                <Header isLoggedIn={isLoggedIn}
+                handleOverlayClick={handleOverlayClick}/>
                 <Movies onSearch={handleGetMovies} renderedMovies={movies}/>
                 <Footer />
               </>
@@ -181,8 +236,9 @@ function App() {
             exact path='/saved-movies'
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} >
-                <Header isLoggedIn={isLoggedIn} />
-                <SavedMovies />
+                <Header isLoggedIn={isLoggedIn}
+                handleOverlayClick={handleOverlayClick}/>
+                <SavedMovies onInit={handleGetSavedMovies} savedMovies={savedMovies} setSavedMovies={setSavedMovies} />
                 <Footer />
               </ProtectedRoute>
             } />
@@ -190,8 +246,16 @@ function App() {
             exact path='/profile'
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} >
-                <Header isLoggedIn={isLoggedIn} />
-                <Profile onSignOut={handleSignOut} />
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  handleOverlayClick={handleOverlayClick}
+                />
+                <Profile
+                  onSignOut={handleSignOut}
+                  onProfileEdit={handleUpdateUser}
+                  setTooltipSettings={setTooltipData}
+                  setInfoTooltipPopupOpen={setInfoTooltipPopupOpen}
+                />
               </ProtectedRoute>
             }
           />
@@ -200,6 +264,13 @@ function App() {
             element={<NotFound />}
           />
         </Routes>
+
+        <InfoTooltip
+          isOpen={isInfoTooltipPopupOpen}
+          onClose={closeAllPopups}
+          tooltipSettings={tooltipData}
+          onOverlayClick={handleOverlayClick}
+        />
       </div>
     </CurrentUserContext.Provider>
   );
