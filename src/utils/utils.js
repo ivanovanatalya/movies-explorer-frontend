@@ -15,7 +15,7 @@ const Length = {
 
 const successMsg = 'Вы успешно зарегистрировались!';
 const successEditMsg = 'Успешно!';
-const successDeleteMsg = 'Успешно delete!';
+const successDeleteMsg = 'Успешно удалено!';
 const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
 
 const filterMovies = (movies, keyWord, isShort) => {

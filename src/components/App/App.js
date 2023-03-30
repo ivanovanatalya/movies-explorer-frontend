@@ -36,7 +36,7 @@ function App() {
   const ctx = {
     ...currentUser,
     setCurrentUser,
-    savedMoviesList,
+    savedMovies: savedMoviesList,
     setSavedMovies,
     setTooltipSettings: setTooltipData,
     setInfoTooltipPopupOpen,
@@ -202,8 +202,8 @@ function App() {
                   handleOverlayClick={handleOverlayClick}
                 />
                 <Movies
-                renderedMovies={movies}
-                savedMovies={savedMoviesList} />
+                  renderedMovies={movies}
+                />
                 <Footer />
               </>
               </ProtectedRoute>
@@ -217,10 +217,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleOverlayClick={handleOverlayClick}
                 />
-                <SavedMovies
-                  savedMovies={savedMoviesList}
-                  setSavedMovies={setSavedMovies}
-                />
+                <SavedMovies />
                 <Footer />
               </ProtectedRoute>
             } />

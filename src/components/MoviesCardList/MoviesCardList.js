@@ -5,10 +5,9 @@ import { Breakpoint, Length } from "../../utils/utils";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MoviesCardList.css";
 
-const MoviesCardList = ({ renderedMovies, savedMovies, setSavedMovies }) => {
+const MoviesCardList = ({ renderedMovies }) => {
   const {pathname} = useLocation();
-  const movies = [];
-const ctx = useContext(CurrentUserContext)
+  const { savedMovies } = useContext(CurrentUserContext)
   const [chunkLength, setChunkLength] = useState(0);
   const [isMoreButton, setIsMoreButton] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -31,15 +30,15 @@ const ctx = useContext(CurrentUserContext)
     } else {
       setChunkLength(Length.DESKTOP);
     }
-  }, [windowWidth, movies.length]);
+  }, [windowWidth, renderedMovies.length]);
 
   useEffect(() => {
     if (pathname === '/movies' ) {
-      movies.length > chunkLength ? setIsMoreButton(true) : setIsMoreButton(false);
+      renderedMovies.length > chunkLength ? setIsMoreButton(true) : setIsMoreButton(false);
     } else {
       setIsMoreButton(false);
     }
-  }, [pathname, movies.length, chunkLength]);
+  }, [pathname, renderedMovies.length, chunkLength]);
 
   const handleMoreBtnClick = () => {
     setChunkLength((current) => {
@@ -62,20 +61,19 @@ const ctx = useContext(CurrentUserContext)
       <ul className="card-list__wrapper">
         {pathname === "/movies" && renderedMovies.length ?
           renderedMovies.map(
-            (item, index) => 
+            (item) => 
               <MovieCard
-                key={index}
+                key={item.movieId}
                 data={item}
                 saveStatus={checkIsSaved(item)}
               />
             ) :
           renderedMovies.map(
-            (item, index) => {
+            (item) => {
               return <MovieCard
-              key={index}
+              key={item.movieId}
               data={item}
               saveStatus={{ isSaved: true, id: item._id }}
-              setSavedMovies={setSavedMovies}
               />
             }
         )}

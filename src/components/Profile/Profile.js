@@ -112,7 +112,7 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
           {isEdit
             ? 
             <button className="profile__link" disabled={isLoading}>
-              Save
+              Сохранить
             </button>
             :
             <button type="button" onClick={(e) => handleEdit(e)} className="profile__link">

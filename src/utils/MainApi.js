@@ -54,11 +54,10 @@ class Api {
   // }
 
   setSavedMovie(movie) {
-    console.log(movie)
     return fetch(`${this._url}/movies`, {
       method: 'POST',
-      headers: { authorization: this._headers.authorization },
-      body: JSON.stringify({ ...movie }),
+      headers: this._headers,
+      body: JSON.stringify(movie),
     })
       .then(res => this._getResponseData(res));
   }

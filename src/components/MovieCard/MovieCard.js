@@ -14,7 +14,7 @@ const MovieCard = ({ data, saveStatus }) => {
   useEffect(() => {
     setIsSaved(saveStatus.isSaved);
     setMainApiId(saveStatus.id);
-  }, [saveStatus]);
+  }, []);
 
   const handleSaveMovie = () => {
     setIsLoading(true);
@@ -22,6 +22,12 @@ const MovieCard = ({ data, saveStatus }) => {
       .then((res) => {
         setSavedMovies([...savedMovies, res]);
         setIsSaved(true);
+        setMainApiId(res._id)
+        setTooltipSettings({
+          message: successEditMsg,
+          isSuccess: true,
+        })
+        setInfoTooltipPopupOpen(true);
       })
       .catch((err) => console.log(err))
       .finally(() => setIsLoading(false));
@@ -30,11 +36,11 @@ const MovieCard = ({ data, saveStatus }) => {
   const handleDeleteMovie = () => {
     setIsLoading(true);
     api.deleteSavedMovie(mainApiId)
-      .then((res) => {
-        console.log(res)
-        setSavedMovies(savedMovies.filter((data) => {
+      .then(() => {
+        const moviesWithoutDeleted = savedMovies.filter((data) => {
           return !(data._id === mainApiId);
-        }));
+        })
+        setSavedMovies(moviesWithoutDeleted);
         setIsSaved(false);
         setTooltipSettings({
           message: successDeleteMsg,
@@ -59,8 +65,8 @@ const MovieCard = ({ data, saveStatus }) => {
           </button>
         ) : (
           <>
-            <input id="card" className="card__save-btn" type="checkbox" onChange={handleSaveMovie}/>
-            <label htmlFor="card" className="card__save-icon" />
+            <input id={data.movieId} className="card__save-btn" type="checkbox" onChange={handleSaveMovie}/>
+            <label htmlFor={data.movieId} className="card__save-icon" />
           </>
         )}
       </div>

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { api } from "../../utils/MainApi";
-import { filterMovies, normalizeMovies } from "../../utils/utils";
+import { filterMovies } from "../../utils/utils";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
@@ -12,7 +13,9 @@ export const SearchMessage = {
   SEARCH_ERROR: 'Во время загрузки сохранённых фильмов произошла ошибка. Подождите немного и попробуйте обновить страницу.',
 }
 
-const SavedMovies = ({ onInit, savedMovies, setSavedMovies }) => {
+const SavedMovies = () => {
+  const { savedMovies, setSavedMovies } = useContext(CurrentUserContext);
+
   const [errorMessage, setErrorMessage] = useState('');
   const [keyWord, setKeyWord] = useState('');
   const [isShortMovies, setIsShortMovies] = useState(false);
@@ -31,6 +34,10 @@ const SavedMovies = ({ onInit, savedMovies, setSavedMovies }) => {
         });
     
   }, []);
+
+  useEffect(() => {
+    setRenderedMovies(savedMovies);
+  }, [savedMovies])
 
   const searchSaved = (keyWord, isShort) => {
     const filteredMovies = filterMovies(savedMovies, keyWord, isShort);
@@ -61,7 +68,6 @@ const SavedMovies = ({ onInit, savedMovies, setSavedMovies }) => {
       ) : (
         <MoviesCardList
           renderedMovies={renderedMovies}
-          setSavedMovies={setSavedMovies}
         />
       )}
     </main>
