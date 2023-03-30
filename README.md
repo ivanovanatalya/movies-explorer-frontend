@@ -6,10 +6,11 @@
 > https://disk.yandex.ru/d/lm84C3aPMgNPsA 
 
 ### Деплой
-> https://mesto.ivanovann.nomoredomains.work/
-IP-адрес сервера: 158.160.25.239
+> https://diploma.ivanovann.nomoredomains.work/
+IP-адрес сервера: 158.160.30.76
 
 ### Pull request
+> https://github.com/ivanovanatalya/movies-explorer-frontend/pull/2
 
 ### Запуск проекта
 `npm start`
