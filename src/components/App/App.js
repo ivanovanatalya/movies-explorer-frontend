@@ -57,12 +57,8 @@ function App() {
           }
         })
         .catch(err => console.log(err));
-    } else {
-      if (!window.location.href.endsWith("/sign-up")) {
-        navigate('/sign-in', { replace: true })
-      }
     }
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -79,7 +75,7 @@ function App() {
 
   const closeAllPopups = () => {
     setInfoTooltipPopupOpen(false);
-    // setIsMenuOpen(false);
+    
   }
 
   const handleOverlayClick = (evt) => {

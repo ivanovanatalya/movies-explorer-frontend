@@ -41,7 +41,7 @@ const Movies = ({ renderedMovies, savedMovies }) => {
         .then((allMovies) => {
           const normalizedMovies = normalizeMovies(allMovies);
           localStorage.setItem('storageAllMovies', JSON.stringify(normalizedMovies));
-          const filteredMovies = keyWord
+          const filteredMovies = keyWord || isShortMovies
             ? filterMovies(normalizedMovies, keyWord, isShortMovies)
             : normalizedMovies;
           handleFilterResult(filteredMovies);
@@ -52,7 +52,7 @@ const Movies = ({ renderedMovies, savedMovies }) => {
         })
         .finally(() => setIsLoading(false));
     } else {
-      const filteredMovies = keyWord
+      const filteredMovies = keyWord || isShortMovies
         ? filterMovies(storageAllMovies, keyWord, isShortMovies)
         : storageAllMovies;
       handleFilterResult(filteredMovies);
@@ -73,7 +73,8 @@ const Movies = ({ renderedMovies, savedMovies }) => {
     getFilteredMovies(keyWord, isShortMovies);
   };
 
-  const handleChangeCheckbox = (isChecked) => {
+  const handleChangeCheckbox = (e) => {
+    const isChecked = e.target.checked;
     setIsShortMovies(isChecked);
     localStorage.setItem('storageIsShort', isChecked);
     getFilteredMovies(keyWord, isChecked);
@@ -83,6 +84,7 @@ const Movies = ({ renderedMovies, savedMovies }) => {
     <main className="movies">
       <SearchForm
         onSearch={handleSubmitSearch}
+        isChecked={isShortMovies}
         onCheckboxChange={handleChangeCheckbox}
         showError={setErrorMessage}
         isLoading={isLoading}

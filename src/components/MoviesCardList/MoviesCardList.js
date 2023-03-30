@@ -6,10 +6,10 @@ import MovieCard from "../MovieCard/MovieCard";
 import "./MoviesCardList.css";
 
 const MoviesCardList = ({ renderedMovies }) => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const { savedMovies } = useContext(CurrentUserContext)
   const [chunkLength, setChunkLength] = useState(0);
-  const [isMoreButton, setIsMoreButton] = useState(false);
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleResizeWindow = () => setWindowWidth(window.innerWidth);
@@ -34,9 +34,11 @@ const MoviesCardList = ({ renderedMovies }) => {
 
   useEffect(() => {
     if (pathname === '/movies' ) {
-      renderedMovies.length > chunkLength ? setIsMoreButton(true) : setIsMoreButton(false);
+      renderedMovies.length > chunkLength
+      ? setIsMoreButtonVisible(true)
+      : setIsMoreButtonVisible(false);
     } else {
-      setIsMoreButton(false);
+      setIsMoreButtonVisible(false);
     }
   }, [pathname, renderedMovies.length, chunkLength]);
 
@@ -45,7 +47,7 @@ const MoviesCardList = ({ renderedMovies }) => {
       if (windowWidth <= Breakpoint.TABLET) {
         return current + 2;
       }
-      return current + 3;
+      return current + 4;
     })
   };
 
@@ -60,7 +62,7 @@ const MoviesCardList = ({ renderedMovies }) => {
     <section className="card-list">
       <ul className="card-list__wrapper">
         {pathname === "/movies" && renderedMovies.length ?
-          renderedMovies.map(
+          renderedMovies.slice(0, chunkLength).map(
             (item) => 
               <MovieCard
                 key={item.movieId}
@@ -78,9 +80,9 @@ const MoviesCardList = ({ renderedMovies }) => {
             }
         )}
       </ul>
-      {isMoreButton ?
+      {isMoreButtonVisible ?
         <button
-          className="movies__btn"
+          className="card-list__btn"
           type="button"
           onClick={handleMoreBtnClick}
         >

@@ -4,9 +4,10 @@ import LoggedOut from "../LoggedOut/LoggedOut";
 import Preloader from "../Preloader/Preloader";
 
 const ProtectedRoute = ({ children, isLoggedIn }) => {
-  if (isLoggedIn === null) {
-    return <LoggedOut />
-  }
+  // if (isLoggedIn === null) {
+  //   return <LoggedOut />
+  // }
+  console.log(isLoggedIn)
   return isLoggedIn
     ? (children)
     : (<Navigate to="/sign-in" />);

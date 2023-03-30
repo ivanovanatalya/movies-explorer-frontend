@@ -6,6 +6,7 @@ import "./SearchForm.css";
 
 const SearchForm = ({
   onSearch,
+  isChecked,
   onCheckboxChange,
   showError,
   isLoading,
@@ -52,6 +53,7 @@ const SearchForm = ({
           onChange={onCheckboxChange}
           className="search__checkbox"
           ref={toggleRef}
+          checked={isChecked}
           type="checkbox"
         />
         <label htmlFor="filter" className="search__checkbox-label"></label>
