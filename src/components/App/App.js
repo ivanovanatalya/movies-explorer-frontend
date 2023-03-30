@@ -58,9 +58,9 @@ function App() {
         })
         .catch(err => console.log(err));
     } else {
-      console.log('fail')
-      // history.replace('/sign-in');
-      navigate('/sign-in', { replace: true })
+      if (!window.location.href.endsWith("/sign-up")) {
+        navigate('/sign-in', { replace: true })
+      }
     }
   }, [navigate]);
 
@@ -151,7 +151,7 @@ function App() {
   function handleUpdateUser(name, email) {
     return api.setUserInfo(name, email)
       .then(res => {
-        console.log(res)
+        gle.log(res)
         setCurrentUser({
           userName: res.name,
           userMail: res.email,
