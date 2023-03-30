@@ -151,7 +151,6 @@ function App() {
   function handleUpdateUser(name, email) {
     return api.setUserInfo(name, email)
       .then(res => {
-        gle.log(res)
         setCurrentUser({
           userName: res.name,
           userMail: res.email,
