@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   margin-top: 74px;
 }
 
@@ -24,6 +23,10 @@
   position: absolute;
   margin-top: 142px;
   margin-bottom: 180px;
+}
+
+.landing__image-background {
+  z-index: -1;
 }
 
 @media screen and (min-width: 768px) {
