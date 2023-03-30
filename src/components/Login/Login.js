@@ -34,9 +34,7 @@ const Login = ({onLogin}) => {
         </div>
         <nav className="login__navigation">
           <button className="login__btn">
-            {/* <Link to="/sign-in"> */}
               Войти
-            {/* </Link> */}
           </button>
           <div className="login__block">
             <span className="login__text">

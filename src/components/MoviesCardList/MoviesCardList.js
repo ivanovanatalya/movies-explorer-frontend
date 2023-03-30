@@ -33,10 +33,10 @@ const MoviesCardList = ({ renderedMovies }) => {
   }, [windowWidth, renderedMovies.length]);
 
   useEffect(() => {
-    if (pathname === '/movies' ) {
+    if (pathname === '/movies') {
       renderedMovies.length > chunkLength
-      ? setIsMoreButtonVisible(true)
-      : setIsMoreButtonVisible(false);
+        ? setIsMoreButtonVisible(true)
+        : setIsMoreButtonVisible(false);
     } else {
       setIsMoreButtonVisible(false);
     }
@@ -63,22 +63,22 @@ const MoviesCardList = ({ renderedMovies }) => {
       <ul className="card-list__wrapper">
         {pathname === "/movies" && renderedMovies.length ?
           renderedMovies.slice(0, chunkLength).map(
-            (item) => 
+            (item) =>
               <MovieCard
                 key={item.movieId}
                 data={item}
                 saveStatus={checkIsSaved(item)}
               />
-            ) :
+          ) :
           renderedMovies.map(
             (item) => {
               return <MovieCard
-              key={item.movieId}
-              data={item}
-              saveStatus={{ isSaved: true, id: item._id }}
+                key={item._id}
+                data={item}
+                saveStatus={{ isSaved: true, id: item._id }}
               />
             }
-        )}
+          )}
       </ul>
       {isMoreButtonVisible ?
         <button

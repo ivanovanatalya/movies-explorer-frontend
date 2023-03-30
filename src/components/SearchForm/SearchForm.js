@@ -38,7 +38,6 @@ const SearchForm = ({
           placeholder="Фильм"
           minLength="1"
           maxLength="30"
-          // required
         />
         <button
           className="search__button"

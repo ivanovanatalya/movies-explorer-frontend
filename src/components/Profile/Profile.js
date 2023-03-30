@@ -37,31 +37,24 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
     }
     setIsLoading(true);
     onProfileEdit(name, email)
-    .then(() => {
-      console.log('edit')
-      setIsEdit(false);
-      setTooltipSettings({
-        // message: AppMessage.BAD_REQUEST,
-        message: successEditMsg,
-        isSuccess: true,
+      .then(() => {
+        setIsEdit(false);
+        setTooltipSettings({
+          message: successEditMsg,
+          isSuccess: true,
+        })
+        setInfoTooltipPopupOpen(true);
       })
-      setInfoTooltipPopupOpen(true);
-    })
-    .catch(err => {
-      console.log(err);
-      setTooltipSettings({
-        // message: AppMessage.BAD_REQUEST,
-        message: failMsg,
-        isSuccess: false,
+      .catch(err => {
+        console.log(err);
+        setTooltipSettings({
+          message: failMsg,
+          isSuccess: false,
+        })
+        setInfoTooltipPopupOpen(true);
       })
-      setInfoTooltipPopupOpen(true);
-    })
-    .finally(() => setIsLoading(false))
+      .finally(() => setIsLoading(false))
   }
-
-  // const isButtonActive = isValid
-  //   && !isLoading
-    // && (values.username !== initialValues.username || values.email !== initialValues.email);
 
   return (
     <main className="profile">
@@ -76,9 +69,8 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
             </label>
             <input
               id="name"
-              className={`profile__text${
-                isEdit ? ' profile__text_editable' : ''
-              }`}
+              className={`profile__text${isEdit ? ' profile__text_editable' : ''
+                }`}
               type="text"
               name="username"
               ref={nameInputRef}
@@ -95,9 +87,8 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
             </label>
             <input
               id="email"
-              className={`profile__text${
-                isEdit ? ' profile__text_editable' : ''
-              }`}
+              className={`profile__text${isEdit ? ' profile__text_editable' : ''
+                }`}
               type="text"
               name="email"
               value={email || ''}
@@ -107,10 +98,9 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
           </div>
         </div>
         {isLoading ? <Preloader /> : ''}
-        {/* <p className='profile__error'>{errors.username || errors.email}</p> */}
-        <nav className="profile__navigation">
+       <nav className="profile__navigation">
           {isEdit
-            ? 
+            ?
             <button className="profile__link" disabled={isLoading}>
               Сохранить
             </button>

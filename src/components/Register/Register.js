@@ -43,9 +43,7 @@ const Register = ({ onRegister }) => {
         </div>
         <nav className="register__navigation">
           <button className="register__btn" >
-            {/* <Link to="/sign-up"> */}
-            Зарегистрироваться
-            {/* </Link> */}
+           Зарегистрироваться
           </button>
           <div className="register__block">
             <span className="register__text">

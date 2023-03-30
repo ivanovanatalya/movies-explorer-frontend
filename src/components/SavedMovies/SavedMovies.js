@@ -22,17 +22,15 @@ const SavedMovies = () => {
   const [renderedMovies, setRenderedMovies] = useState(savedMovies);
 
   useEffect(() => {
-    // onInit();
+    api.getSavedMovies()
+      .then((movies) => {
+        setSavedMovies(movies);
+        setRenderedMovies(movies);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-      api.getSavedMovies()
-        .then((movies) => {
-          setSavedMovies(movies);
-          setRenderedMovies(movies);
-        })
-        .catch(err => {
-          console.log(err); // выведем ошибку в консоль
-        });
-    
   }, []);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const SavedMovies = () => {
     const filteredMovies = filterMovies(savedMovies, keyWord, isShort);
     filteredMovies.length === 0 ? setErrorMessage(SearchMessage.NOT_FOUND) : setErrorMessage('');
     !savedMovies.length ? setErrorMessage(SearchMessage.NOT_SAVED) : setErrorMessage('');
-    
+
     setRenderedMovies(filteredMovies);
   }
 
@@ -62,6 +60,7 @@ const SavedMovies = () => {
         showError={setErrorMessage}
         keyWord={keyWord}
         setKeyWord={setKeyWord}
+        isChecked={isShortMovies}
       />
       {errorMessage ? (
         <p className='profile__error'>{errorMessage}</p>

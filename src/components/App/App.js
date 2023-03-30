@@ -14,10 +14,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { authApi } from '../../utils/authApi';
 import { api } from '../../utils/MainApi';
-import { moviesApi } from '../../utils/MoviesApi';
+
 
 import './App.css';
-import { failMsg, filterMovies, normalizeMovies, successMsg } from '../../utils/utils';
+import { failMsg, successMsg } from '../../utils/utils';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
@@ -30,7 +30,6 @@ function App() {
     userName: "name",
     userMail: "email"
   });
-  const [movies, setMovies] = useState([]);
   const [savedMoviesList, setSavedMovies] = useState([]);
 
   const ctx = {
@@ -95,7 +94,6 @@ function App() {
             userName: res.name,
             userMail: res.email,
           })
-          // history.replace('/');
           navigate('/movies', { replace: true })
         }
       })
@@ -119,7 +117,6 @@ function App() {
           })
           setTooltipData({ isSuccess: true, message: successMsg });
           setInfoTooltipPopupOpen(true)
-          // history.replace('/sign-in');
           navigate('/movies', { replace: true })
         }
       })
@@ -130,20 +127,6 @@ function App() {
       });
   }
 
-  function handleSaveMovie(movie) {
-    // movie = { saved: true/false };
-    const isMovieSaved = movie.saved;
-
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeSavedMovieStatus(movie._id, isMovieSaved)
-      .then((newMovie) => {
-        setMovies ((state) => state.map((item) => item._id === movie._id ? newMovie : item));
-      })
-      .catch(err => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }
-
   function handleUpdateUser(name, email) {
     return api.setUserInfo(name, email)
       .then(res => {
@@ -151,7 +134,6 @@ function App() {
           userName: res.name,
           userMail: res.email,
         });
-        // closeAllPopups();
       })
   }
 
@@ -197,9 +179,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleOverlayClick={handleOverlayClick}
                 />
-                <Movies
-                  renderedMovies={movies}
-                />
+                <Movies />
                 <Footer />
               </>
               </ProtectedRoute>

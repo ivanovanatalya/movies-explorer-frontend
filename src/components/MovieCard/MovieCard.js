@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import remove from "../../images/close.svg";
 import { api } from '../../utils/MainApi';
@@ -6,6 +7,7 @@ import { formatDuration, successDeleteMsg, successEditMsg } from "../../utils/ut
 import "./MovieCard.css";
 
 const MovieCard = ({ data, saveStatus }) => {
+  const { pathname } = useLocation();
   const { savedMovies, setSavedMovies, setInfoTooltipPopupOpen, setTooltipSettings } = useContext(CurrentUserContext);
   const [isSaved, setIsSaved] = useState(false);
   const [mainApiId, setMainApiId] = useState('');
@@ -59,15 +61,16 @@ const MovieCard = ({ data, saveStatus }) => {
       </a>
       <div className="card__wrapper">
         {data.nameRU}
-        {isSaved ? (
-          <button type="button" className="card__btn" disabled={isLoading} onClick={handleDeleteMovie}>
-            <img className="card__remove-icon" src={remove} alt="remove saved movie" />
-          </button>
-        ) : (
-          <>
-            <input id={data.movieId} className="card__save-btn" type="checkbox" onChange={handleSaveMovie}/>
-            <label htmlFor={data.movieId} className="card__save-icon" />
-          </>
+        {pathname === '/saved-movies' ?
+          (
+            <button type="button" className="card__btn" disabled={isLoading} onClick={handleDeleteMovie}>
+              <img className="card__remove-icon" src={remove} alt="remove saved movie" />
+            </button>
+          ) : (
+            <>
+              <input id={data.movieId} className="card__save-btn" type="checkbox" checked={isSaved} onChange={isSaved ? handleDeleteMovie : handleSaveMovie} />
+              <label htmlFor={data.movieId} className="card__save-icon" />
+            </>
         )}
       </div>
       <div className="card__text">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
@@ -7,29 +7,42 @@ import { SearchMessage } from "../SavedMovies/SavedMovies";
 import "./Movies.css";
 import { moviesApi } from "../../utils/MoviesApi";
 import { filterMovies, normalizeMovies } from "../../utils/utils";
+import { api } from "../../utils/MainApi";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Movies = ({ renderedMovies, savedMovies }) => {
-  const [searchedMovies, setSearchedMovies] = useState(renderedMovies);
+const Movies = ({ savedMovies }) => {
+  const [searchedMovies, setSearchedMovies] = useState([]);
   const [keyWord, setKeyWord] = useState('');
   const [isShortMovies, setIsShortMovies] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const storageAllMovies = JSON.parse(localStorage.getItem('storageAllMovies')) || [];
-  
+  const { setSavedMovies } = useContext(CurrentUserContext);
+
   useEffect(() => {
     const storageSearchResult = JSON.parse(localStorage.getItem('storageSearchResult')) || [];
     const storageKeyWord = localStorage.getItem('storageKeyWord') || '';
     const storageIsShort = JSON.parse(localStorage.getItem('storageIsShort')) || false;
 
-    storageSearchResult.length ? setSearchedMovies(storageSearchResult) : 
-    moviesApi.getMoviesList()
-      .then((movies) => {
-        const normalizedMovies = normalizeMovies(movies);
-        setSearchedMovies(normalizedMovies)
-      })
-      .catch(err => {
-        console.log(err); // выведем ошибку в консоль
-      });
+    setIsLoading(true);
+    api.getSavedMovies()
+    .then((movies) => {
+      setSavedMovies(movies);
+      setIsLoading(false);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+    storageSearchResult.length ? setSearchedMovies(storageSearchResult) :
+      moviesApi.getMoviesList()
+        .then((movies) => {
+          const normalizedMovies = normalizeMovies(movies);
+          setSearchedMovies(normalizedMovies)
+        })
+        .catch(err => {
+          console.log(err);
+        });
     storageKeyWord && setKeyWord(storageKeyWord);
     storageIsShort && setIsShortMovies(storageIsShort);
   }, []);
@@ -97,8 +110,8 @@ const Movies = ({ renderedMovies, savedMovies }) => {
         ) : (
           <>
             <MoviesCardList
-            renderedMovies={searchedMovies}
-            savedMovies={savedMovies} />
+              renderedMovies={searchedMovies}
+              savedMovies={savedMovies} />
           </>
         )
       }
