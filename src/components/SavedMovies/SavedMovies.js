@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { filterMovies } from "../../utils/utils";
+import { api } from "../../utils/MainApi";
+import { filterMovies, normalizeMovies } from "../../utils/utils";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import "./SavedMovies.css";
@@ -13,26 +14,55 @@ export const SearchMessage = {
 
 const SavedMovies = ({ onInit, savedMovies, setSavedMovies }) => {
   const [errorMessage, setErrorMessage] = useState('');
+  const [keyWord, setKeyWord] = useState('');
+  const [isShortMovies, setIsShortMovies] = useState(false);
+  const [renderedMovies, setRenderedMovies] = useState(savedMovies);
 
   useEffect(() => {
-    onInit();
+    // onInit();
+
+      api.getSavedMovies()
+        .then((movies) => {
+          setSavedMovies(movies);
+          setRenderedMovies(movies);
+        })
+        .catch(err => {
+          console.log(err); // выведем ошибку в консоль
+        });
+    
   }, []);
 
   const searchSaved = (keyWord, isShort) => {
     const filteredMovies = filterMovies(savedMovies, keyWord, isShort);
     filteredMovies.length === 0 ? setErrorMessage(SearchMessage.NOT_FOUND) : setErrorMessage('');
     !savedMovies.length ? setErrorMessage(SearchMessage.NOT_SAVED) : setErrorMessage('');
-  
-    setSavedMovies(filteredMovies);
+    
+    setRenderedMovies(filteredMovies);
   }
+
+  const handleChangeCheckbox = (e) => {
+    const isChecked = e.target.checked;
+    setIsShortMovies(isChecked);
+    localStorage.setItem('storageIsShort', isChecked);
+    searchSaved(keyWord, isChecked);
+  };
 
   return (
     <main className="saved-movies">
-      <SearchForm onSearch={searchSaved} />
-      {errorMessage.length ? (
+      <SearchForm
+        onSearch={searchSaved}
+        onCheckboxChange={handleChangeCheckbox}
+        showError={setErrorMessage}
+        keyWord={keyWord}
+        setKeyWord={setKeyWord}
+      />
+      {errorMessage ? (
         <p className='profile__error'>{errorMessage}</p>
       ) : (
-        <MoviesCardList renderedMovies={savedMovies} isSaved />
+        <MoviesCardList
+          renderedMovies={renderedMovies}
+          setSavedMovies={setSavedMovies}
+        />
       )}
     </main>
   );

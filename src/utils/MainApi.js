@@ -53,16 +53,18 @@ class Api {
   //     .then(res => this._getResponseData(res));
   // }
 
-  _setSavedMovie(movieID) {
+  setSavedMovie(movie) {
+    console.log(movie)
     return fetch(`${this._url}/movies`, {
-      method: 'PUT',
+      method: 'POST',
       headers: { authorization: this._headers.authorization },
+      body: JSON.stringify({ ...movie }),
     })
       .then(res => this._getResponseData(res));
   }
 
-  _deleteSavedMovie(movieID) {
-    return fetch(`${this._url}/movies`, {
+  deleteSavedMovie(movieID) {
+    return fetch(`${this._url}/movies/${movieID}`, {
       method: 'DELETE',
       headers: { authorization: this._headers.authorization },
     })

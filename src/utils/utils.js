@@ -1,6 +1,23 @@
 const IMAGES_URL = 'https://api.nomoreparties.co';
 const SHORT_FILM_DURATION = 40;
 
+const Breakpoint = {
+  MOBILE: 480,
+  TABLET: 1010,
+  DESKTOP: 1280,
+};
+
+const Length = {
+  MOBILE: 5,
+  TABLET: 8,
+  DESKTOP: 12,
+}
+
+const successMsg = 'Вы успешно зарегистрировались!';
+const successEditMsg = 'Успешно!';
+const successDeleteMsg = 'Успешно delete!';
+const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
+
 const filterMovies = (movies, keyWord, isShort) => {
   const word = keyWord.toLowerCase().trim();
 
@@ -19,7 +36,6 @@ const filterMovies = (movies, keyWord, isShort) => {
 };
 
 const normalizeMovies = (movies) => {
-  console.log(movies)
   return movies
     .map((movie) => ({
         country: movie.country || 'unknown',
@@ -46,4 +62,16 @@ const formatDuration = (time) => {
   return hours > 0 ? `${hours}ч ${minutes}м` : `${minutes}м`;
 };
 
-export { filterMovies, normalizeMovies, formatDuration };
+export {
+  filterMovies,
+  normalizeMovies,
+  formatDuration,
+  Breakpoint,
+  Length,
+  SHORT_FILM_DURATION,
+  IMAGES_URL,
+  successEditMsg,
+  successDeleteMsg,
+  successMsg,
+  failMsg,
+};

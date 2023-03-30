@@ -17,11 +17,8 @@ import { api } from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 
 import './App.css';
-import { filterMovies, normalizeMovies } from '../../utils/utils';
+import { failMsg, filterMovies, normalizeMovies, successMsg } from '../../utils/utils';
 import InfoTooltip from '../InfoTooltip/InfoTooltip';
-
-export const successMsg = 'Вы успешно зарегистрировались!';
-export const failMsg = 'Что-то пошло не так! Попробуйте ещё раз.';
 
 function App() {
   const navigate = useNavigate();
@@ -34,7 +31,16 @@ function App() {
     userMail: "email"
   });
   const [movies, setMovies] = useState([]);
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMoviesList, setSavedMovies] = useState([]);
+
+  const ctx = {
+    ...currentUser,
+    setCurrentUser,
+    savedMoviesList,
+    setSavedMovies,
+    setTooltipSettings: setTooltipData,
+    setInfoTooltipPopupOpen,
+  }
 
   useEffect(() => {
     const jwt = localStorage.getItem('token');
@@ -94,7 +100,7 @@ function App() {
             userMail: res.email,
           })
           // history.replace('/');
-          navigate('/', { replace: true })
+          navigate('/movies', { replace: true })
         }
       })
       .catch(err => {
@@ -108,10 +114,17 @@ function App() {
     authApi.signUp(name, email, password)
       .then(res => {
         if (res) {
+          const jwt = localStorage.getItem('token');
+          api.setToken(jwt);
+          setIsLoggedIn(true);
+          setCurrentUser({
+            userName: res.name,
+            userMail: res.email,
+          })
           setTooltipData({ isSuccess: true, message: successMsg });
           setInfoTooltipPopupOpen(true)
           // history.replace('/sign-in');
-          navigate('/sign-in', { replace: true })
+          navigate('/movies', { replace: true })
         }
       })
       .catch(err => {
@@ -129,45 +142,6 @@ function App() {
     api.changeSavedMovieStatus(movie._id, isMovieSaved)
       .then((newMovie) => {
         setMovies ((state) => state.map((item) => item._id === movie._id ? newMovie : item));
-      })
-      .catch(err => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }
-
-  function handleGetMovies(searchInput, isShort) {
-    moviesApi.getMoviesList()
-      .then((movies) => {
-        console.log('fond')
-
-        const normalizedMovies = normalizeMovies(movies)
-        const filteredMovies = searchInput
-        ? filterMovies(normalizedMovies, searchInput, isShort)
-        : [];
-
-        const search = {
-          movies: filterMovies,
-          isShort,
-          searchInput,
-        }
-        localStorage.setItem('searchData', search);
-
-        const renderedMovies = filteredMovies.splice(0, 5);
-        setMovies(renderedMovies);
-      })
-      .catch(err => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }
-
-  function handleGetSavedMovies(searchInput, isShort) {
-    api.getSavedMovies()
-      .then((movies) => {
-        console.log('fond')
-
-        // const normalizedMovies = normalizeMovies(movies)
-        
-        setSavedMovies(movies);
       })
       .catch(err => {
         console.log(err); // выведем ошибку в консоль
@@ -197,7 +171,7 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={ctx}>
       <div className='app'>
         <Routes>
           <Route
@@ -224,9 +198,13 @@ function App() {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} >
               <>
-                <Header isLoggedIn={isLoggedIn}
-                handleOverlayClick={handleOverlayClick}/>
-                <Movies onSearch={handleGetMovies} renderedMovies={movies}/>
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  handleOverlayClick={handleOverlayClick}
+                />
+                <Movies
+                renderedMovies={movies}
+                savedMovies={savedMoviesList} />
                 <Footer />
               </>
               </ProtectedRoute>
@@ -236,9 +214,14 @@ function App() {
             exact path='/saved-movies'
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn} >
-                <Header isLoggedIn={isLoggedIn}
-                handleOverlayClick={handleOverlayClick}/>
-                <SavedMovies onInit={handleGetSavedMovies} savedMovies={savedMovies} setSavedMovies={setSavedMovies} />
+                <Header
+                  isLoggedIn={isLoggedIn}
+                  handleOverlayClick={handleOverlayClick}
+                />
+                <SavedMovies
+                  savedMovies={savedMoviesList}
+                  setSavedMovies={setSavedMovies}
+                />
                 <Footer />
               </ProtectedRoute>
             } />

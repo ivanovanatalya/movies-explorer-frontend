@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { failMsg } from "../App/App";
+import { failMsg, successEditMsg } from "../../utils/utils";
 import Preloader from "../Preloader/Preloader";
 import "./Profile.css";
 
@@ -40,6 +40,12 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
     .then(() => {
       console.log('edit')
       setIsEdit(false);
+      setTooltipSettings({
+        // message: AppMessage.BAD_REQUEST,
+        message: successEditMsg,
+        isSuccess: true,
+      })
+      setInfoTooltipPopupOpen(true);
     })
     .catch(err => {
       console.log(err);
