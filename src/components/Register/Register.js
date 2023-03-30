@@ -38,8 +38,7 @@ const Register = ({ onRegister }) => {
           <label className="register__label" htmlFor="#password">
             Пароль
           </label>
-          <input ref={inputPass} id="password" className="register__input register__input_error" placeholder="Password" type="password" required />
-          <p className="register__label register__input_error">Что-то пошло не так...</p>
+          <input ref={inputPass} id="password" className="register__input" placeholder="Password" type="password" required />
         </div>
         <nav className="register__navigation">
           <button className="register__btn" >

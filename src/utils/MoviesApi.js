@@ -15,7 +15,7 @@ class Api {
     const token = localStorage.getItem('token');
     return fetch(`${this._url}`, {
       method: 'GET',
-      headers: { authorization: `Bearer ${token}` },
+      // headers: { authorization: `Bearer ${token}` },
     })
       .then(res => this._getResponseData(res));
   }}

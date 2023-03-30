@@ -16,7 +16,7 @@ const MovieCard = ({ data, saveStatus }) => {
   useEffect(() => {
     setIsSaved(saveStatus.isSaved);
     setMainApiId(saveStatus.id);
-  }, []);
+  }, [saveStatus]);
 
   const handleSaveMovie = () => {
     setIsLoading(true);

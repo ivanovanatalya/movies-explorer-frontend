@@ -45,7 +45,7 @@ const Movies = ({ savedMovies }) => {
         });
     storageKeyWord && setKeyWord(storageKeyWord);
     storageIsShort && setIsShortMovies(storageIsShort);
-  }, []);
+  }, [setSavedMovies]);
 
   const getFilteredMovies = (keyWord, isShortMovies) => {
     if (!storageAllMovies.length) {

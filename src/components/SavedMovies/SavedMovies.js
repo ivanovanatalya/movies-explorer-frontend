@@ -31,7 +31,7 @@ const SavedMovies = () => {
         console.log(err);
       });
 
-  }, []);
+  }, [setSavedMovies]);
 
   useEffect(() => {
     setRenderedMovies(savedMovies);

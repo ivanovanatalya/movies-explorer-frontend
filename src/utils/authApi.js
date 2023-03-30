@@ -57,6 +57,6 @@ class AuthApi {
 
 export const authApi = new AuthApi({
   // baseUrl: 'https://auth.nomoreparties.co',
-  // baseUrl: 'https://api.mesto.ivanovann.nomoredomains.work',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.diploma.ivanovann.nomoredomains.work',
+  // baseUrl: 'http://localhost:3001',
 });
