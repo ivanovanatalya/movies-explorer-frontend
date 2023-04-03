@@ -26,13 +26,13 @@ const Movies = ({ savedMovies }) => {
 
     setIsLoading(true);
     api.getSavedMovies()
-    .then((movies) => {
-      setSavedMovies(movies);
-      setIsLoading(false);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then((movies) => {
+        setSavedMovies(movies);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .finally(() => setIsLoading(false));
 
     storageSearchResult.length ? setSearchedMovies(storageSearchResult) :
       moviesApi.getMoviesList()

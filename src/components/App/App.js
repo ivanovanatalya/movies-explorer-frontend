@@ -83,7 +83,8 @@ function App() {
     }
   };
 
-  function handleLogin({ email, password }) {
+  function handleLogin({ email, password }, setIsLoading) {
+    setIsLoading(true);
     authApi.signIn(email, password)
       .then(res => {
         if (res) {
@@ -101,10 +102,12 @@ function App() {
         console.log(err);
         setTooltipData({ isSuccess: false, message: failMsg });
         setInfoTooltipPopupOpen(true);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
-  function handleRegister({ name, email, password }) {
+  function handleRegister({ name, email, password }, setIsLoading) {
+    setIsLoading(true)
     authApi.signUp(name, email, password)
       .then(res => {
         if (res) {
@@ -124,7 +127,8 @@ function App() {
         console.log(err);
         setTooltipData({ isSuccess: false, message: failMsg });
         setInfoTooltipPopupOpen(true);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleUpdateUser(name, email) {

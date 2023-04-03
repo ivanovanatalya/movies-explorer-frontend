@@ -1,11 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../images/logo.svg';
 import "./Login.css";
 
-const Login = ({onLogin}) => {
+const Login = ({ onLogin }) => {
   const inputEmail = useRef(null);
   const inputPass = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -13,7 +14,7 @@ const Login = ({onLogin}) => {
       email: inputEmail.current.value,
       password: inputPass.current.value
     };
-    onLogin(data);
+    onLogin(data, setIsLoading);
   }
   return (
     <main className="login">
@@ -24,17 +25,17 @@ const Login = ({onLogin}) => {
       <form className="login__form" method="" action="" onSubmit={handleSubmit}>
         <div>
           <label className="login__label" htmlFor="#email">
-          E-mail
+            E-mail
           </label>
           <input ref={inputEmail} id="email" className="login__input" placeholder="E-mail" type="email" required />
           <label className="login__label" htmlFor="#password">
-          Пароль
+            Пароль
           </label>
           <input ref={inputPass} id="password" className="login__input login__input" placeholder="Password" type="password" required />
         </div>
         <nav className="login__navigation">
-          <button className="login__btn">
-              Войти
+          <button className="login__btn" disabled={isLoading}>
+            Войти
           </button>
           <div className="login__block">
             <span className="login__text">

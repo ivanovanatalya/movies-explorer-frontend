@@ -68,10 +68,10 @@ const MovieCard = ({ data, saveStatus }) => {
             </button>
           ) : (
             <>
-              <input id={data.movieId} className="card__save-btn" type="checkbox" checked={isSaved} onChange={isSaved ? handleDeleteMovie : handleSaveMovie} />
+              <input id={data.movieId} className="card__save-btn" type="checkbox" disabled={isLoading} checked={isSaved} onChange={isSaved ? handleDeleteMovie : handleSaveMovie} />
               <label htmlFor={data.movieId} className="card__save-icon" />
             </>
-        )}
+          )}
       </div>
       <div className="card__text">
         {formatDuration(data.duration)}
