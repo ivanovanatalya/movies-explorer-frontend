@@ -60,6 +60,5 @@ class AuthApi {
 }
 
 export const authApi = new AuthApi({
-  // baseUrl: 'https://api.diploma.ivanovann.nomoredomains.work',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.diploma.ivanovann.nomoredomains.work',
 });

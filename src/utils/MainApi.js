@@ -63,8 +63,7 @@ class Api {
 }
 
 export const api = new Api({
-  // baseUrl: 'https://api.diploma.ivanovann.nomoredomains.work',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.diploma.ivanovann.nomoredomains.work',
   headers: {
     'Content-Type': 'application/json'
   }

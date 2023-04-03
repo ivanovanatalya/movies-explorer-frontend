@@ -50,9 +50,6 @@ const normalizeMovies = (movies) => {
         nameRU: movie.nameRU || 'unknown',
         nameEN: movie.nameEN || 'unknown',
       }))
-    // .map((movie) => (
-    //   HTTP_REGEX.test(movie.trailerLink) ? movie : {...movie, trailerLink: movie.image}
-    // ));
 };
 
 const formatDuration = (time) => {
