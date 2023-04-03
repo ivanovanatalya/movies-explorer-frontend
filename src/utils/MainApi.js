@@ -36,23 +36,6 @@ class Api {
       .then(res => this._getResponseData(res));
   }
 
-  // addCard({ name, link }) {
-  //   return fetch(`${this._url}/cards`, {
-  //     method: 'POST',
-  //     headers: this._headers,
-  //     body: JSON.stringify({ name, link })
-  //   })
-  //     .then(res => this._getResponseData(res));
-  // }
-
-  // deleteCard(cardID) {
-  //   return fetch(`${this._url}/cards/${cardID}`, {
-  //     method: 'DELETE',
-  //     headers: { authorization: this._headers.authorization },
-  //   })
-  //     .then(res => this._getResponseData(res));
-  // }
-
   setSavedMovie(movie) {
     return fetch(`${this._url}/movies`, {
       method: 'POST',
