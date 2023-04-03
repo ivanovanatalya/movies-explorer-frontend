@@ -7,6 +7,7 @@ import "./Profile.css";
 
 const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipPopupOpen }) => {
   const userContext = useContext(CurrentUserContext);
+  const [greeting, setGreeting] = useState(`Привет, ${userContext.userName}!`);
   const [name, setName] = useState(userContext.userName);
   const [email, setEmail] = useState(userContext.userMail);
   const [isEdit, setIsEdit] = useState(false);
@@ -15,12 +16,12 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
 
   const handleNameChange = (event) => {
     event.preventDefault();
-    setName(event.target.value)
+    setName(event.target.value);
   }
 
   const handleEmailChange = (event) => {
     event.preventDefault();
-    setEmail(event.target.value)
+    setEmail(event.target.value);
   }
 
   const handleEdit = (event) => {
@@ -39,6 +40,7 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
     onProfileEdit(name, email)
       .then(() => {
         setIsEdit(false);
+        setGreeting(`Привет, ${name}!`);
         setTooltipSettings({
           message: successEditMsg,
           isSuccess: true,
@@ -59,7 +61,7 @@ const Profile = ({ onSignOut, onProfileEdit, setTooltipSettings, setInfoTooltipP
   return (
     <main className="profile">
       <div className="profile__title">
-        {`Привет, ${name}!`}
+        {greeting}
       </div>
       <form className="profile__form" onSubmit={(e) => handleSubmit(e)} method="" action="">
         <div>

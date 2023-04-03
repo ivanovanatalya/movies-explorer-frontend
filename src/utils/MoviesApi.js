@@ -12,7 +12,6 @@ class Api {
   }
 
   getMoviesList() {
-    const token = localStorage.getItem('token');
     return fetch(`${this._url}`, {
       method: 'GET',
     })
