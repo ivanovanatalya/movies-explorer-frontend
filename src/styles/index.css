@@ -1,0 +1,25 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/font-face.css);
+
+@import url(../components/Main/Main.css);
+@import url(../components/Header/Header.css);
+
+body {
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  color: #000;
+  overflow: scroll;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+}
